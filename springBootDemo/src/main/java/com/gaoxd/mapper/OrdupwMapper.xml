@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gaoxd.dao.OrdupwMapper" >
+  <resultMap id="BaseResultMap" type="com.gaoxd.pojo.Ordupw" >
+    <result column="PW_CODE_COMPANY" property="pwCodeCompany" jdbcType="VARCHAR" />
+    <result column="PW_PLAN" property="pwPlan" jdbcType="VARCHAR" />
+    <result column="PW_RATE_SCALE" property="pwRateScale" jdbcType="VARCHAR" />
+    <result column="PW_LANGUAGE" property="pwLanguage" jdbcType="VARCHAR" />
+    <result column="PW_ILOC" property="pwIloc" jdbcType="VARCHAR" />
+    <result column="PW_PLAN_TITLE" property="pwPlanTitle" jdbcType="VARCHAR" />
+    <result column="PW_PLAN_TITLE_UP" property="pwPlanTitleUp" jdbcType="VARCHAR" />
+    <result column="PW_WVR_TITLE" property="pwWvrTitle" jdbcType="VARCHAR" />
+    <result column="PW_ADB_TITLE" property="pwAdbTitle" jdbcType="VARCHAR" />
+    <result column="PW_FE_TITLE" property="pwFeTitle" jdbcType="VARCHAR" />
+    <result column="PW_MR_TITLE" property="pwMrTitle" jdbcType="VARCHAR" />
+    <result column="PW_BASIC_PA_PLAN" property="pwBasicPaPlan" jdbcType="VARCHAR" />
+    <result column="PW_BASIC_PA_RS" property="pwBasicPaRs" jdbcType="VARCHAR" />
+    <result column="PW_BASIC_PA_LANG" property="pwBasicPaLang" jdbcType="VARCHAR" />
+    <result column="PW_BASIC_PA_ILOC" property="pwBasicPaIloc" jdbcType="VARCHAR" />
+    <result column="PW_WVR_PA_PLAN" property="pwWvrPaPlan" jdbcType="VARCHAR" />
+    <result column="PW_WVR_PA_RS" property="pwWvrPaRs" jdbcType="VARCHAR" />
+    <result column="PW_WVR_PA_LANG" property="pwWvrPaLang" jdbcType="VARCHAR" />
+    <result column="PW_WVR_PA_ILOC" property="pwWvrPaIloc" jdbcType="VARCHAR" />
+    <result column="PW_ADB_PA_PLAN" property="pwAdbPaPlan" jdbcType="VARCHAR" />
+    <result column="PW_ADB_PA_RS" property="pwAdbPaRs" jdbcType="VARCHAR" />
+    <result column="PW_ADB_PA_LANG" property="pwAdbPaLang" jdbcType="VARCHAR" />
+    <result column="PW_ADB_PA_ILOC" property="pwAdbPaIloc" jdbcType="VARCHAR" />
+    <result column="PW_MSG1_CONDITION" property="pwMsg1Condition" jdbcType="VARCHAR" />
+    <result column="PW_MSG1_LINE_01" property="pwMsg1Line01" jdbcType="VARCHAR" />
+    <result column="PW_MSG1_LINE_02" property="pwMsg1Line02" jdbcType="VARCHAR" />
+    <result column="PW_MSG2_CONDITION" property="pwMsg2Condition" jdbcType="VARCHAR" />
+    <result column="PW_MSG2_LINE_01" property="pwMsg2Line01" jdbcType="VARCHAR" />
+    <result column="PW_MSG2_LINE_02" property="pwMsg2Line02" jdbcType="VARCHAR" />
+    <result column="PW_MSG2_LINE_03" property="pwMsg2Line03" jdbcType="VARCHAR" />
+    <result column="PW_MSG3_CONDITION" property="pwMsg3Condition" jdbcType="VARCHAR" />
+    <result column="PW_MSG3_LINE_01" property="pwMsg3Line01" jdbcType="VARCHAR" />
+    <result column="PW_MSG3_LINE_02" property="pwMsg3Line02" jdbcType="VARCHAR" />
+    <result column="PW_MSG3_LINE_03" property="pwMsg3Line03" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    PW_CODE_COMPANY, PW_PLAN, PW_RATE_SCALE, PW_LANGUAGE, PW_ILOC, PW_PLAN_TITLE, PW_PLAN_TITLE_UP, 
+    PW_WVR_TITLE, PW_ADB_TITLE, PW_FE_TITLE, PW_MR_TITLE, PW_BASIC_PA_PLAN, PW_BASIC_PA_RS, 
+    PW_BASIC_PA_LANG, PW_BASIC_PA_ILOC, PW_WVR_PA_PLAN, PW_WVR_PA_RS, PW_WVR_PA_LANG, 
+    PW_WVR_PA_ILOC, PW_ADB_PA_PLAN, PW_ADB_PA_RS, PW_ADB_PA_LANG, PW_ADB_PA_ILOC, PW_MSG1_CONDITION, 
+    PW_MSG1_LINE_01, PW_MSG1_LINE_02, PW_MSG2_CONDITION, PW_MSG2_LINE_01, PW_MSG2_LINE_02, 
+    PW_MSG2_LINE_03, PW_MSG3_CONDITION, PW_MSG3_LINE_01, PW_MSG3_LINE_02, PW_MSG3_LINE_03
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gaoxd.pojo.OrdupwExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ordupw
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.gaoxd.pojo.OrdupwExample" >
+    delete from ordupw
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gaoxd.pojo.Ordupw" >
+    insert into ordupw (PW_CODE_COMPANY, PW_PLAN, PW_RATE_SCALE, 
+      PW_LANGUAGE, PW_ILOC, PW_PLAN_TITLE, 
+      PW_PLAN_TITLE_UP, PW_WVR_TITLE, PW_ADB_TITLE, 
+      PW_FE_TITLE, PW_MR_TITLE, PW_BASIC_PA_PLAN, 
+      PW_BASIC_PA_RS, PW_BASIC_PA_LANG, PW_BASIC_PA_ILOC, 
+      PW_WVR_PA_PLAN, PW_WVR_PA_RS, PW_WVR_PA_LANG, 
+      PW_WVR_PA_ILOC, PW_ADB_PA_PLAN, PW_ADB_PA_RS, 
+      PW_ADB_PA_LANG, PW_ADB_PA_ILOC, PW_MSG1_CONDITION, 
+      PW_MSG1_LINE_01, PW_MSG1_LINE_02, PW_MSG2_CONDITION, 
+      PW_MSG2_LINE_01, PW_MSG2_LINE_02, PW_MSG2_LINE_03, 
+      PW_MSG3_CONDITION, PW_MSG3_LINE_01, PW_MSG3_LINE_02, 
+      PW_MSG3_LINE_03)
+    values (#{pwCodeCompany,jdbcType=VARCHAR}, #{pwPlan,jdbcType=VARCHAR}, #{pwRateScale,jdbcType=VARCHAR}, 
+      #{pwLanguage,jdbcType=VARCHAR}, #{pwIloc,jdbcType=VARCHAR}, #{pwPlanTitle,jdbcType=VARCHAR}, 
+      #{pwPlanTitleUp,jdbcType=VARCHAR}, #{pwWvrTitle,jdbcType=VARCHAR}, #{pwAdbTitle,jdbcType=VARCHAR}, 
+      #{pwFeTitle,jdbcType=VARCHAR}, #{pwMrTitle,jdbcType=VARCHAR}, #{pwBasicPaPlan,jdbcType=VARCHAR}, 
+      #{pwBasicPaRs,jdbcType=VARCHAR}, #{pwBasicPaLang,jdbcType=VARCHAR}, #{pwBasicPaIloc,jdbcType=VARCHAR}, 
+      #{pwWvrPaPlan,jdbcType=VARCHAR}, #{pwWvrPaRs,jdbcType=VARCHAR}, #{pwWvrPaLang,jdbcType=VARCHAR}, 
+      #{pwWvrPaIloc,jdbcType=VARCHAR}, #{pwAdbPaPlan,jdbcType=VARCHAR}, #{pwAdbPaRs,jdbcType=VARCHAR}, 
+      #{pwAdbPaLang,jdbcType=VARCHAR}, #{pwAdbPaIloc,jdbcType=VARCHAR}, #{pwMsg1Condition,jdbcType=VARCHAR}, 
+      #{pwMsg1Line01,jdbcType=VARCHAR}, #{pwMsg1Line02,jdbcType=VARCHAR}, #{pwMsg2Condition,jdbcType=VARCHAR}, 
+      #{pwMsg2Line01,jdbcType=VARCHAR}, #{pwMsg2Line02,jdbcType=VARCHAR}, #{pwMsg2Line03,jdbcType=VARCHAR}, 
+      #{pwMsg3Condition,jdbcType=VARCHAR}, #{pwMsg3Line01,jdbcType=VARCHAR}, #{pwMsg3Line02,jdbcType=VARCHAR}, 
+      #{pwMsg3Line03,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gaoxd.pojo.Ordupw" >
+    insert into ordupw
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pwCodeCompany != null" >
+        PW_CODE_COMPANY,
+      </if>
+      <if test="pwPlan != null" >
+        PW_PLAN,
+      </if>
+      <if test="pwRateScale != null" >
+        PW_RATE_SCALE,
+      </if>
+      <if test="pwLanguage != null" >
+        PW_LANGUAGE,
+      </if>
+      <if test="pwIloc != null" >
+        PW_ILOC,
+      </if>
+      <if test="pwPlanTitle != null" >
+        PW_PLAN_TITLE,
+      </if>
+      <if test="pwPlanTitleUp != null" >
+        PW_PLAN_TITLE_UP,
+      </if>
+      <if test="pwWvrTitle != null" >
+        PW_WVR_TITLE,
+      </if>
+      <if test="pwAdbTitle != null" >
+        PW_ADB_TITLE,
+      </if>
+      <if test="pwFeTitle != null" >
+        PW_FE_TITLE,
+      </if>
+      <if test="pwMrTitle != null" >
+        PW_MR_TITLE,
+      </if>
+      <if test="pwBasicPaPlan != null" >
+        PW_BASIC_PA_PLAN,
+      </if>
+      <if test="pwBasicPaRs != null" >
+        PW_BASIC_PA_RS,
+      </if>
+      <if test="pwBasicPaLang != null" >
+        PW_BASIC_PA_LANG,
+      </if>
+      <if test="pwBasicPaIloc != null" >
+        PW_BASIC_PA_ILOC,
+      </if>
+      <if test="pwWvrPaPlan != null" >
+        PW_WVR_PA_PLAN,
+      </if>
+      <if test="pwWvrPaRs != null" >
+        PW_WVR_PA_RS,
+      </if>
+      <if test="pwWvrPaLang != null" >
+        PW_WVR_PA_LANG,
+      </if>
+      <if test="pwWvrPaIloc != null" >
+        PW_WVR_PA_ILOC,
+      </if>
+      <if test="pwAdbPaPlan != null" >
+        PW_ADB_PA_PLAN,
+      </if>
+      <if test="pwAdbPaRs != null" >
+        PW_ADB_PA_RS,
+      </if>
+      <if test="pwAdbPaLang != null" >
+        PW_ADB_PA_LANG,
+      </if>
+      <if test="pwAdbPaIloc != null" >
+        PW_ADB_PA_ILOC,
+      </if>
+      <if test="pwMsg1Condition != null" >
+        PW_MSG1_CONDITION,
+      </if>
+      <if test="pwMsg1Line01 != null" >
+        PW_MSG1_LINE_01,
+      </if>
+      <if test="pwMsg1Line02 != null" >
+        PW_MSG1_LINE_02,
+      </if>
+      <if test="pwMsg2Condition != null" >
+        PW_MSG2_CONDITION,
+      </if>
+      <if test="pwMsg2Line01 != null" >
+        PW_MSG2_LINE_01,
+      </if>
+      <if test="pwMsg2Line02 != null" >
+        PW_MSG2_LINE_02,
+      </if>
+      <if test="pwMsg2Line03 != null" >
+        PW_MSG2_LINE_03,
+      </if>
+      <if test="pwMsg3Condition != null" >
+        PW_MSG3_CONDITION,
+      </if>
+      <if test="pwMsg3Line01 != null" >
+        PW_MSG3_LINE_01,
+      </if>
+      <if test="pwMsg3Line02 != null" >
+        PW_MSG3_LINE_02,
+      </if>
+      <if test="pwMsg3Line03 != null" >
+        PW_MSG3_LINE_03,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pwCodeCompany != null" >
+        #{pwCodeCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="pwPlan != null" >
+        #{pwPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="pwRateScale != null" >
+        #{pwRateScale,jdbcType=VARCHAR},
+      </if>
+      <if test="pwLanguage != null" >
+        #{pwLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="pwIloc != null" >
+        #{pwIloc,jdbcType=VARCHAR},
+      </if>
+      <if test="pwPlanTitle != null" >
+        #{pwPlanTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pwPlanTitleUp != null" >
+        #{pwPlanTitleUp,jdbcType=VARCHAR},
+      </if>
+      <if test="pwWvrTitle != null" >
+        #{pwWvrTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pwAdbTitle != null" >
+        #{pwAdbTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pwFeTitle != null" >
+        #{pwFeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMrTitle != null" >
+        #{pwMrTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pwBasicPaPlan != null" >
+        #{pwBasicPaPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="pwBasicPaRs != null" >
+        #{pwBasicPaRs,jdbcType=VARCHAR},
+      </if>
+      <if test="pwBasicPaLang != null" >
+        #{pwBasicPaLang,jdbcType=VARCHAR},
+      </if>
+      <if test="pwBasicPaIloc != null" >
+        #{pwBasicPaIloc,jdbcType=VARCHAR},
+      </if>
+      <if test="pwWvrPaPlan != null" >
+        #{pwWvrPaPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="pwWvrPaRs != null" >
+        #{pwWvrPaRs,jdbcType=VARCHAR},
+      </if>
+      <if test="pwWvrPaLang != null" >
+        #{pwWvrPaLang,jdbcType=VARCHAR},
+      </if>
+      <if test="pwWvrPaIloc != null" >
+        #{pwWvrPaIloc,jdbcType=VARCHAR},
+      </if>
+      <if test="pwAdbPaPlan != null" >
+        #{pwAdbPaPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="pwAdbPaRs != null" >
+        #{pwAdbPaRs,jdbcType=VARCHAR},
+      </if>
+      <if test="pwAdbPaLang != null" >
+        #{pwAdbPaLang,jdbcType=VARCHAR},
+      </if>
+      <if test="pwAdbPaIloc != null" >
+        #{pwAdbPaIloc,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg1Condition != null" >
+        #{pwMsg1Condition,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg1Line01 != null" >
+        #{pwMsg1Line01,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg1Line02 != null" >
+        #{pwMsg1Line02,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg2Condition != null" >
+        #{pwMsg2Condition,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg2Line01 != null" >
+        #{pwMsg2Line01,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg2Line02 != null" >
+        #{pwMsg2Line02,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg2Line03 != null" >
+        #{pwMsg2Line03,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg3Condition != null" >
+        #{pwMsg3Condition,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg3Line01 != null" >
+        #{pwMsg3Line01,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg3Line02 != null" >
+        #{pwMsg3Line02,jdbcType=VARCHAR},
+      </if>
+      <if test="pwMsg3Line03 != null" >
+        #{pwMsg3Line03,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gaoxd.pojo.OrdupwExample" resultType="java.lang.Integer" >
+    select count(*) from ordupw
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ordupw
+    <set >
+      <if test="record.pwCodeCompany != null" >
+        PW_CODE_COMPANY = #{record.pwCodeCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwPlan != null" >
+        PW_PLAN = #{record.pwPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwRateScale != null" >
+        PW_RATE_SCALE = #{record.pwRateScale,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwLanguage != null" >
+        PW_LANGUAGE = #{record.pwLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwIloc != null" >
+        PW_ILOC = #{record.pwIloc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwPlanTitle != null" >
+        PW_PLAN_TITLE = #{record.pwPlanTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwPlanTitleUp != null" >
+        PW_PLAN_TITLE_UP = #{record.pwPlanTitleUp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwWvrTitle != null" >
+        PW_WVR_TITLE = #{record.pwWvrTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwAdbTitle != null" >
+        PW_ADB_TITLE = #{record.pwAdbTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwFeTitle != null" >
+        PW_FE_TITLE = #{record.pwFeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMrTitle != null" >
+        PW_MR_TITLE = #{record.pwMrTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwBasicPaPlan != null" >
+        PW_BASIC_PA_PLAN = #{record.pwBasicPaPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwBasicPaRs != null" >
+        PW_BASIC_PA_RS = #{record.pwBasicPaRs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwBasicPaLang != null" >
+        PW_BASIC_PA_LANG = #{record.pwBasicPaLang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwBasicPaIloc != null" >
+        PW_BASIC_PA_ILOC = #{record.pwBasicPaIloc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwWvrPaPlan != null" >
+        PW_WVR_PA_PLAN = #{record.pwWvrPaPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwWvrPaRs != null" >
+        PW_WVR_PA_RS = #{record.pwWvrPaRs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwWvrPaLang != null" >
+        PW_WVR_PA_LANG = #{record.pwWvrPaLang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwWvrPaIloc != null" >
+        PW_WVR_PA_ILOC = #{record.pwWvrPaIloc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwAdbPaPlan != null" >
+        PW_ADB_PA_PLAN = #{record.pwAdbPaPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwAdbPaRs != null" >
+        PW_ADB_PA_RS = #{record.pwAdbPaRs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwAdbPaLang != null" >
+        PW_ADB_PA_LANG = #{record.pwAdbPaLang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwAdbPaIloc != null" >
+        PW_ADB_PA_ILOC = #{record.pwAdbPaIloc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg1Condition != null" >
+        PW_MSG1_CONDITION = #{record.pwMsg1Condition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg1Line01 != null" >
+        PW_MSG1_LINE_01 = #{record.pwMsg1Line01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg1Line02 != null" >
+        PW_MSG1_LINE_02 = #{record.pwMsg1Line02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg2Condition != null" >
+        PW_MSG2_CONDITION = #{record.pwMsg2Condition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg2Line01 != null" >
+        PW_MSG2_LINE_01 = #{record.pwMsg2Line01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg2Line02 != null" >
+        PW_MSG2_LINE_02 = #{record.pwMsg2Line02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg2Line03 != null" >
+        PW_MSG2_LINE_03 = #{record.pwMsg2Line03,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg3Condition != null" >
+        PW_MSG3_CONDITION = #{record.pwMsg3Condition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg3Line01 != null" >
+        PW_MSG3_LINE_01 = #{record.pwMsg3Line01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg3Line02 != null" >
+        PW_MSG3_LINE_02 = #{record.pwMsg3Line02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwMsg3Line03 != null" >
+        PW_MSG3_LINE_03 = #{record.pwMsg3Line03,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ordupw
+    set PW_CODE_COMPANY = #{record.pwCodeCompany,jdbcType=VARCHAR},
+      PW_PLAN = #{record.pwPlan,jdbcType=VARCHAR},
+      PW_RATE_SCALE = #{record.pwRateScale,jdbcType=VARCHAR},
+      PW_LANGUAGE = #{record.pwLanguage,jdbcType=VARCHAR},
+      PW_ILOC = #{record.pwIloc,jdbcType=VARCHAR},
+      PW_PLAN_TITLE = #{record.pwPlanTitle,jdbcType=VARCHAR},
+      PW_PLAN_TITLE_UP = #{record.pwPlanTitleUp,jdbcType=VARCHAR},
+      PW_WVR_TITLE = #{record.pwWvrTitle,jdbcType=VARCHAR},
+      PW_ADB_TITLE = #{record.pwAdbTitle,jdbcType=VARCHAR},
+      PW_FE_TITLE = #{record.pwFeTitle,jdbcType=VARCHAR},
+      PW_MR_TITLE = #{record.pwMrTitle,jdbcType=VARCHAR},
+      PW_BASIC_PA_PLAN = #{record.pwBasicPaPlan,jdbcType=VARCHAR},
+      PW_BASIC_PA_RS = #{record.pwBasicPaRs,jdbcType=VARCHAR},
+      PW_BASIC_PA_LANG = #{record.pwBasicPaLang,jdbcType=VARCHAR},
+      PW_BASIC_PA_ILOC = #{record.pwBasicPaIloc,jdbcType=VARCHAR},
+      PW_WVR_PA_PLAN = #{record.pwWvrPaPlan,jdbcType=VARCHAR},
+      PW_WVR_PA_RS = #{record.pwWvrPaRs,jdbcType=VARCHAR},
+      PW_WVR_PA_LANG = #{record.pwWvrPaLang,jdbcType=VARCHAR},
+      PW_WVR_PA_ILOC = #{record.pwWvrPaIloc,jdbcType=VARCHAR},
+      PW_ADB_PA_PLAN = #{record.pwAdbPaPlan,jdbcType=VARCHAR},
+      PW_ADB_PA_RS = #{record.pwAdbPaRs,jdbcType=VARCHAR},
+      PW_ADB_PA_LANG = #{record.pwAdbPaLang,jdbcType=VARCHAR},
+      PW_ADB_PA_ILOC = #{record.pwAdbPaIloc,jdbcType=VARCHAR},
+      PW_MSG1_CONDITION = #{record.pwMsg1Condition,jdbcType=VARCHAR},
+      PW_MSG1_LINE_01 = #{record.pwMsg1Line01,jdbcType=VARCHAR},
+      PW_MSG1_LINE_02 = #{record.pwMsg1Line02,jdbcType=VARCHAR},
+      PW_MSG2_CONDITION = #{record.pwMsg2Condition,jdbcType=VARCHAR},
+      PW_MSG2_LINE_01 = #{record.pwMsg2Line01,jdbcType=VARCHAR},
+      PW_MSG2_LINE_02 = #{record.pwMsg2Line02,jdbcType=VARCHAR},
+      PW_MSG2_LINE_03 = #{record.pwMsg2Line03,jdbcType=VARCHAR},
+      PW_MSG3_CONDITION = #{record.pwMsg3Condition,jdbcType=VARCHAR},
+      PW_MSG3_LINE_01 = #{record.pwMsg3Line01,jdbcType=VARCHAR},
+      PW_MSG3_LINE_02 = #{record.pwMsg3Line02,jdbcType=VARCHAR},
+      PW_MSG3_LINE_03 = #{record.pwMsg3Line03,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
