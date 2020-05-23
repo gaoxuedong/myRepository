@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>主页</title>
+
+
+<link rel="stylesheet" type="text/css"
+	href="./js/jquery-easyui-1.9.5/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="./js/jquery-easyui-1.9.5/themes/icon.css">
+<link rel="stylesheet" type="text/css"
+	href="./js/jquery-easyui-1.9.5/demo/demo.css">
+<script type="text/javascript"
+	src="./js/jquery-easyui-1.9.5/jquery.min.js"></script>
+<script type="text/javascript"
+	src="./js/jquery-easyui-1.9.5/jquery.easyui.min.js"></script>
+<!-- easyui中文支持 -->
+<script type="text/javascript"
+	src="./js/jquery-easyui-1.9.5/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<body>
+	<h2>Custom DataGrid Pager</h2>
+	<p>You can append some buttons to the standard datagrid pager bar.</p>
+
+	<input id="pwCodeCompany" name="pwCodeCompany">公司码
+	<input id='pwPlan' name="pwPlan">计划
+	<button onclick="return get();">查询</button>
+	<table id="dg"></table>
+	<script type="text/javascript">
+		function get() {
+			var pwCodeCompany=$("#pwCodeCompany").val();
+			var pwPlan=$("#pwPlan").val();
+			$('#dg').datagrid({
+				queryParams: {
+					pwCodeCompany: pwCodeCompany,
+					pwPlan: pwPlan
+				},
+				rownumbers : true,
+				singleSelect : true,
+				pagination : true,
+				url : 'test/findAll',
+				method : 'post',
+				columns : [ [ {
+					field : 'pwCodeCompany',
+					title : '公司编码',
+					width : 100
+				}, {
+					field : 'pwPlan',
+					title : '计划',
+					width : 100
+				}, {
+					field : 'pwLanguage',
+					title : '语言',
+					width : 100
+				}, {
+					field : 'pwRateScale',
+					title : '比率',
+					width : 100,
+					align : 'right'
+				} ] ]
+			});
+		}
+	</script>
+</body>
+</body>
+</body>
+</html>
